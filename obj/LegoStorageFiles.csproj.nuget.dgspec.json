@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\prem.ferenc\\Desktop\\WPF\\LegoStorageFiles\\LegoStorageFiles.csproj": {}
+    "C:\\Users\\prem.ferenc\\Desktop\\WPF_Brickstore\\LegoStorageFiles.csproj": {}
   },
   "projects": {
-    "C:\\Users\\prem.ferenc\\Desktop\\WPF\\LegoStorageFiles\\LegoStorageFiles.csproj": {
+    "C:\\Users\\prem.ferenc\\Desktop\\WPF_Brickstore\\LegoStorageFiles.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\prem.ferenc\\Desktop\\WPF\\LegoStorageFiles\\LegoStorageFiles.csproj",
+        "projectUniqueName": "C:\\Users\\prem.ferenc\\Desktop\\WPF_Brickstore\\LegoStorageFiles.csproj",
         "projectName": "LegoStorageFiles",
-        "projectPath": "C:\\Users\\prem.ferenc\\Desktop\\WPF\\LegoStorageFiles\\LegoStorageFiles.csproj",
+        "projectPath": "C:\\Users\\prem.ferenc\\Desktop\\WPF_Brickstore\\LegoStorageFiles.csproj",
         "packagesPath": "C:\\Users\\prem.ferenc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prem.ferenc\\Desktop\\WPF\\LegoStorageFiles\\obj\\",
+        "outputPath": "C:\\Users\\prem.ferenc\\Desktop\\WPF_Brickstore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\prem.ferenc\\AppData\\Roaming\\NuGet\\NuGet.Config",

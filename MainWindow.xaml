@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LegoStorageFiles"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
@@ -16,14 +17,21 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Button Grid.Row="2" VerticalAlignment="Bottom" Margin="0 0 0 20" Width="100" Height="30" Content="Tallózás" Click="LoadFile"/>
 
-        <Button Width="100" Height="30" Content="Tallózás" Click="LoadFile"/>
+        <Label Content="Termék neve:" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="70 0 0 0"/>
+        <TextBox x:Name="searchByTxt" Grid.Column="2" Grid.ColumnSpan="3" Width="300" Height="30" HorizontalAlignment="Right" Margin="0 0 100 0"  TextChanged="SearchByItemName"/>
 
-        <Label Content="Szűrés:" Grid.Column="2" VerticalAlignment="Center" Margin="30 0 0 0"/>
-        <TextBox x:Name="searchByTxt" Grid.Column="2" Grid.ColumnSpan="2" Width="300" Height="30" HorizontalAlignment="Right" TextChanged="SearchByIdAndName"/>
+        <Label Content="Kategória:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <ComboBox x:Name="sortByCategoryCbx" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0 0 10 0" Width="200" Height="30" SelectionChanged="CategorySorter">
+            <ComboBoxItem Content="No category" Tag="noValue"/>
+        </ComboBox>
 
-
-        <DataGrid x:Name="legoInfoHolderDg" Grid.Row="1" Grid.ColumnSpan="4" />
+        <Label Content="Termék Id:" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0 0 20 0"/>
+        <TextBox x:Name="searchByIdTxt" Grid.Column="5" Height="30" TextChanged="SearchByItemId" />
+        <DataGrid x:Name="legoInfoHolderDg" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" />
     </Grid>
 </Window>
