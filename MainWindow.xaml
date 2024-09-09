@@ -27,7 +27,6 @@
 
         <Label Content="Kategória:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <ComboBox x:Name="sortByCategoryCbx" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0 0 10 0" Width="200" Height="30" SelectionChanged="CategorySorter">
-            <ComboBoxItem Content="No category" Tag="noValue"/>
         </ComboBox>
 
         <Label Content="Termék Id:" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalContentAlignment="Right" Margin="0 0 20 0"/>

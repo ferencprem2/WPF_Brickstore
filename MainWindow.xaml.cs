@@ -51,6 +51,8 @@ namespace LegoStorageFiles
                 
                 legoInfoHolderDg.ItemsSource = legoBrickList;
             }
+            sortByCategoryCbx.Items.Clear();
+            sortByCategoryCbx.Items.Add("All");
             legoBrickList.Select(x => x.CategoryName).Distinct().ToList().ForEach(y => sortByCategoryCbx.Items.Add(y));
         }
 
@@ -63,7 +65,8 @@ namespace LegoStorageFiles
         {
             try
             {
-                legoInfoHolderDg.ItemsSource = legoBrickList.Where(x => x.ItemName.ToLower().StartsWith(searchByTxt.Text.ToLower()) && x.ItemId.ToLower().StartsWith(searchByIdTxt.Text.ToLower()));
+                currentNameOptions = searchByTxt.Text.ToLower();
+                ApplyFilters();
                 
             }
             catch (Exception nameSearchException)
@@ -76,7 +79,8 @@ namespace LegoStorageFiles
         {
             try
             {
-                legoInfoHolderDg.ItemsSource = legoBrickList.Where(x => x.ItemId.ToLower().StartsWith(searchByTxt.Text.ToLower()) && x.ItemName.ToLower().StartsWith(searchByTxt.Text.ToLower()));
+                currentIdOptions = searchByIdTxt.Text.ToLower();
+                ApplyFilters();
             }
             catch (Exception idSearchException)
             {
@@ -88,19 +92,34 @@ namespace LegoStorageFiles
         {
             try
             {
-                if (sortByCategoryCbx.SelectedIndex == 0) 
+                if (sortByCategoryCbx.SelectedItem != null)
                 {
-                    legoInfoHolderDg.ItemsSource = legoBrickList;
-                } 
-                else
-                {
-                    legoInfoHolderDg.ItemsSource = legoBrickList.Where(x => x.CategoryName.Contains(sortByCategoryCbx.SelectedItem.ToString())).OrderBy(y => y.CategoryName);
+                    currentCategoryOptions = sortByCategoryCbx.SelectedItem.ToString();
+                    ApplyFilters();
                 }
             }
             catch (Exception categorySearchException)
             {
                 MessageBox.Show(categorySearchException.Message);
             }
+        }
+
+        private void ApplyFilters()
+        {
+            var view = CollectionViewSource.GetDefaultView(legoBrickList);
+            view.Filter = item =>
+            {
+                if (item is LegoBricks legoBrick)
+                {
+                    bool matchesId = string.IsNullOrEmpty(currentIdOptions) || legoBrick.ItemId.ToLower().Contains(currentIdOptions);
+                    bool matchesName = string.IsNullOrEmpty(currentNameOptions) || legoBrick.ItemName.ToLower().Contains(currentNameOptions);
+                    bool mathcesCategory = string.IsNullOrEmpty(currentCategoryOptions) || currentCategoryOptions == "All" || legoBrick.CategoryName.Contains(currentCategoryOptions);
+
+                    return matchesId && matchesName && mathcesCategory;
+                }
+                return false;
+            };
+            view.Refresh();
         }
     }
 }
