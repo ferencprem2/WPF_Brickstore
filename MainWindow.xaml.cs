@@ -66,6 +66,15 @@ namespace LegoStorageFiles
             try
             {
                 currentNameOptions = searchByTxt.Text.ToLower();
+                sortByCategoryCbx.Items.Clear();
+                sortByCategoryCbx.Items.Add("All");
+                foreach (var item in legoBrickList.Where(x => x.CategoryName.ToLower().Contains(currentNameOptions)).ToList())
+                {
+                    if (!sortByCategoryCbx.Items.Contains(item.CategoryName))
+                    {
+                        sortByCategoryCbx.Items.Add(item.CategoryName);
+                    }
+                }
                 ApplyFilters();
                 
             }
