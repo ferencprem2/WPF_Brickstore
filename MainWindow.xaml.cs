@@ -29,6 +29,26 @@ namespace LegoStorageFiles
             InitializeComponent();
         }
 
+        private void LoadFilesIntoHolder()
+        {
+            OpenFileDialog openFileDialog = new ();
+            openFileDialog.Multiselect = true;
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    foreach (var file in openFileDialog.FileNames)
+                    {
+                        fileDataGrid.Items.Add(file);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
         private void LoadFromBSXFile()
         {
             OpenFileDialog openFileDialog = new();
@@ -58,7 +78,8 @@ namespace LegoStorageFiles
 
         private void LoadFile(object sender, RoutedEventArgs e)
         {
-            LoadFromBSXFile();
+            //LoadFromBSXFile();
+            LoadFilesIntoHolder();
         }
         
         private void SearchByItemName(object sender, TextChangedEventArgs e)
